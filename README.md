@@ -1,2 +1,6 @@
 # NEC-Practice1
-E-commerce website (product - IPHONE)
+E-commerce website 
+Collaborators
+## Viraj
+## Prajwal
+## Amuruta
