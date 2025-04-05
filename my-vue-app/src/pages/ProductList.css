@@ -1,0 +1,182 @@
+/* Layout */
+.container, .product-list-container {
+  display: flex;
+  font-family: "Arial", sans-serif;
+  background-color: #f4f6f9;
+  padding: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #eef2fc;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.sidebar h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px;
+  color: #666;
+  cursor: pointer;
+}
+
+.sidebar .active {
+  font-weight: bold;
+  background-color: #d6e4ff;
+  border-radius: 5px;
+  color: #4a90e2;
+}
+
+/* Settings Section */
+.settings {
+  margin-top: 30px;
+}
+
+/* Main Content */
+.main-content, .product-list-content {
+  flex: 1;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Add Product Button */
+.add-button {
+  background: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.add-button .icon {
+  margin-right: 5px;
+}
+
+/* Table Styling */
+.table-container {
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #eef2fc;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #eef2fc;
+}
+
+/* Vendor Information */
+.vendor-name {
+  font-weight: bold;
+}
+
+.vendor-url {
+  display: block;
+  font-size: 12px;
+  color: gray;
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 100px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  height: 5px;
+  position: relative;
+}
+
+.progress-fill {
+  height: 5px;
+  background: #6c5ce7;
+  border-radius: 5px;
+}
+
+.rating-text {
+  font-size: 12px;
+  color: gray;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+/* Status & Tags */
+.status {
+  color: green;
+  font-weight: bold;
+}
+
+.tag {
+  display: inline-block;
+  background: #e0f7fa;
+  color: #00796b;
+  padding: 2px 5px;
+  margin-left: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.extra-tags {
+  color: gray;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-icon {
+  color: blue;
+  cursor: pointer;
+}
+
+.delete-icon {
+  color: red;
+  cursor: pointer;
+}
+
+.menu-icon {
+  cursor: pointer;
+}
