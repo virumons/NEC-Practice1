@@ -1,3 +1,4 @@
+```
 .
 ├── login ("/" main route)/
 │   └── signup ("/signup")
@@ -9,8 +10,10 @@
     │   └── internal pages (folder name - profile)
     └── preformance page
 
+```
 ## routes
 
+```
 / - login
 /signup - signup
 /main - Maindashboard
@@ -28,6 +31,7 @@
 /password - change password page
 /address - manage shipping and billing addresses
     
+```
   
 ## Dependencies
     "lucide-react": "^0.487.0",
@@ -40,7 +44,7 @@
 
 ## for python JWT auth
 
-pip install Flask Flask-JWT-Extended Flask-SQLAlchemy email-validator bcrypt
-pip install python-dotenv
+pip install Flask Flask-JWT-Extended Flask-SQLAlchemy email-validator bcrypt  Flask-Cors  
+pip install python-dotenv  
 npm install axios
 
