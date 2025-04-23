@@ -1,12 +1,46 @@
-# React + Vite
+.
+├── login ("/" main route)/
+│   └── signup ("/signup")
+└── Maindashboard (/main route)/
+    ├── productlisting/
+    │   └── addproduct (folder name - Addproduct)
+    ├── Application (live pages)
+    ├── profile/
+    │   └── internal pages (folder name - profile)
+    └── preformance page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## routes
 
-Currently, two official plugins are available:
+/ - login
+/signup - signup
+/main - Maindashboard
+/productlisting - product listing
+/profile - user profile management
+/pre - performance metrics
+/live - Application page 
+/addcategory - start of new product adding
+/Chooseoption - choose new/used option page
+/suggestion - suggstion on choosed category item after addcategory page (add product)
+/adddetails - detail items - add detailed descriptions and specifications for the product
+/preview - preview of details of item
+/message - seller profile message 
+/profile - user profile management (personal info)
+/password - change password page
+/address - manage shipping and billing addresses
+    
+  
+## Dependencies
+    "lucide-react": "^0.487.0",
+    "react": "^19.0.0",
+    "react-contenteditable": "^3.3.7",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.5.0",
+    "react-toastify": "^11.0.5",
+    "recharts": "^2.15.1"
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## for python JWT auth
 
-## Expanding the ESLint configuration
+pip install Flask Flask-JWT-Extended Flask-SQLAlchemy email-validator bcrypt
+pip install python-dotenv
+npm install axios
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

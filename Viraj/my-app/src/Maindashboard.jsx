@@ -1,28 +1,15 @@
+ /* dev- viraj
+ */ 
+
 import React from "react";
+import Nav from './Nav.jsx'
+
 
 const App = () => {
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-50">
     
-      <aside className="w-64 bg-white p-5 shadow-md">
-        <h1 className="text-xl font-bold mb-6">New dash</h1>
-        <button className="w-full bg-purple-600 text-white py-2 rounded-lg mb-4">
-          + Connect New Account
-        </button>
-        <nav>
-          <ul className="space-y-4">
-            <li className="text-gray-700 font-medium">Dashboard</li>
-            <li className="text-gray-500">Performance</li>
-            <li className="text-gray-500">Hotjar</li>
-            <li className="text-gray-500">Tickets (15)</li>
-            <li className="text-gray-500">Agents</li>
-            <li className="text-gray-500">Customers</li>
-            <li className="text-gray-500">Products</li>
-            <li className="text-gray-500">Orders</li>
-            <li className="text-gray-500">Reports</li>
-          </ul>
-        </nav>
-      </aside>
+     <Nav />
 
       {/* Main Content */}
       <main className="flex-1 p-6">
@@ -34,7 +21,7 @@ const App = () => {
               🔔
             </span>
             <img
-              src="https://via.placeholder.com/32"
+              src="https://static.vecteezy.com/system/resources/previews/020/213/738/large_2x/add-profile-picture-icon-upload-photo-of-social-media-user-vector.jpg"
               alt="User"
               className="rounded-full w-8 h-8"
             />
