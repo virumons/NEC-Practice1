@@ -1,11 +1,8 @@
- /* 
- dev- amuruta
- dev- viraj (JWT auth)
- */ 
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
+import { Eye, EyeOff } from "lucide-react"; // optional, else use emoji/icons
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -13,17 +10,21 @@ export default function Signup() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    phone:"",    
+    phone: "",
     password: "",
     confirmPassword: "",
     businessName: ""
   });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [generalError, setGeneralError] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: "" });
+    setGeneralError("");
   };
 
   const validate = () => {
@@ -71,18 +72,19 @@ export default function Signup() {
         type,
         businessName: form.businessName || ""
       });
-
+      console.log(response)
       setSuccess(true);
-      navigate("/main");
+      navigate("/newprofile");
     } catch (error) {
       const serverMsg = error.response?.data?.error || "Signup failed. Please try again.";
-      setErrors({ email: serverMsg });
+      setGeneralError(serverMsg);
       setSuccess(false);
     }
   };
 
   return (
     <div className="flex min-h-screen font-sans bg-gradient-to-r from-white to-blue-50">
+      {/* Left Section */}
       <div className="w-1/2 bg-blue-600 text-white flex flex-col justify-center px-20 py-12 relative overflow-hidden">
         <h1 className="text-5xl font-extrabold leading-tight mb-6">
           Register and start <br /> selling products at your original cost
@@ -120,6 +122,7 @@ export default function Signup() {
         </div>
       </div>
 
+      {/* Right Section */}
       <div className="w-1/2 flex items-center justify-center px-16">
         <div className="max-w-md w-full bg-white p-10 rounded-xl shadow-xl">
           <h2 className="text-3xl font-bold mb-2 text-gray-900">Hello, Register here</h2>
@@ -143,6 +146,7 @@ export default function Signup() {
           </div>
 
           <form onSubmit={handleSubmit} noValidate>
+            {/* Name */}
             <div className="mb-4">
               <input
                 type="text"
@@ -155,6 +159,7 @@ export default function Signup() {
               {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
             </div>
 
+            {/* Email */}
             <div className="mb-4">
               <input
                 type="email"
@@ -167,18 +172,20 @@ export default function Signup() {
               {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
             </div>
 
+            {/* Phone */}
             <div className="mb-4">
               <input
-                type="Phone"
+                type="tel"
                 name="phone"
                 placeholder="Phone number"
                 value={form.phone}
                 onChange={handleChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
-              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+              {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
             </div>
 
+            {/* Business Name */}
             {type === "Business" && (
               <div className="mb-4">
                 <input
@@ -193,30 +200,45 @@ export default function Signup() {
               </div>
             )}
 
-            <div className="mb-4">
+            {/* Password */}
+            <div className="mb-4 relative">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Password"
                 value={form.password}
                 onChange={handleChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
+              <div
+                className="absolute top-3 right-4 cursor-pointer text-gray-500"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </div>
               {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
             </div>
 
-            <div className="mb-4">
+            {/* Confirm Password */}
+            <div className="mb-4 relative">
               <input
-                type="password"
+                type={showConfirmPassword ? "text" : "password"}
                 name="confirmPassword"
                 placeholder="Re-enter password"
                 value={form.confirmPassword}
                 onChange={handleChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
+              <div
+                className="absolute top-3 right-4 cursor-pointer text-gray-500"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </div>
               {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>}
             </div>
 
+            {/* Submit */}
             <button
               type="submit"
               className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200"
@@ -224,14 +246,14 @@ export default function Signup() {
               Sign up
             </button>
 
-            {success && (
-              <p className="text-green-600 text-center mt-4">Registered successfully!</p>
-            )}
+            {/* Success & Error */}
+            {success && <p className="text-green-600 text-center mt-4">Registered successfully!</p>}
+            {generalError && <p className="text-red-600 text-center mt-4">{generalError}</p>}
           </form>
 
           <p className="text-sm text-center text-gray-600 mt-6">
             Have an account?{' '}
-            <Link to='/auth' className="text-blue-500 hover:underline">
+            <Link to='/' className="text-blue-500 hover:underline">
               Sign-in
             </Link>
           </p>

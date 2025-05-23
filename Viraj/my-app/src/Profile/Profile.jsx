@@ -2,11 +2,60 @@
  dev- viraj
  */ 
 import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import Profilenav from "./Profilenav";
 import Topnav from "./Topnav";
 import { Pencil } from "lucide-react";
 
+// Need to discuss with deepak sir on api's and token management
+// data need to be fetched from DB - API name(fetch /Getuserprofile) success of user auth and user_id or username including token, now userdata inputted then the api will go and authenticate 
+// fetch user details - followings
+// What are the data fetching from db for userdata and profile by fetching the below JSON data 
+// billing address and default shipping address on profile 
+// acc status (active/inactive/exp) and reason (short description) buffer 180 days waiting (period acclock -(password error))
+/*
+images[profileimage,coverimage],
+  user_id:"abc123"
+  username: "kulk7827",
+  fullname: "Viraj kulkarni",
+  accountType: "Individual",
+  contact: {
+    email: "v***5@gmail.com",
+    phone: "+91 xxxxxxxx60",
+    verified: false
+  },
+  personalInfo: {
+    name: "Viraj Kulkarni",
+    address: "Kcc bank layout, house no 26 navnagar"
+  },
+  addresses: {
+          billing: {
+            firstName: "viraj",
+            lastName: "kulkarni",
+            company: "",
+            address: "Road No. 13/k, House no. 1320/C, Flat No. 5D",
+            country: "india",
+            state: "",
+            city: "hubali",
+            zip: "1207",
+            email: "virja45@gmail.com",
+            phone: "+1-202-555-0118"
+          },
+          shipping: {
+            firstName: "viraj",
+            lastName: "kulkarni",
+            company: "",
+            address: "Road No. 13/k, House no. 1320/C, Flat No. 5D",
+            country: "india",
+            state: "",
+            city: "gokuldam powder gali",
+            zip: "1207",
+            email: "Jethalal@gmail.com",
+            phone: "+1-202-555-0118"
+          }
+        }
 
+*/ 
 const userData = {
   username: "kulk7827",
   fullname: "Viraj kulkarni",
@@ -113,11 +162,11 @@ export default function Profile() {
                 <div className="font-medium text-2xl">Contact details</div>
                 <div className="flex justify-between px-6 py-2 ">
                   <div>Email<br /><span className="text-gray-600">{userData.contact.email}</span><br /><span className="text-red-500">Not verified</span></div>
-                  <div className="flex gap-2 text-blue-600"><button>Edit</button></div>
+                  <div className="flex gap-2 text-blue-600"><Link to='/password'>Edit</Link></div>
                 </div>
                 <div className="flex justify-between px-6 py-2 ">
                   <div>Phone<br /><span className="text-gray-600">{userData.contact.phone}</span><br /><span className="text-red-500">Not verified</span></div>
-                  <div className="flex gap-2 text-blue-600"><button>Edit</button></div>
+                  <div className="flex gap-2 text-blue-600"><Link to='/password'>Edit</Link></div>
                 </div>
               </div>
 
@@ -129,7 +178,7 @@ export default function Profile() {
                   <span className="text-[20px]">{userData.personalInfo.address}</span>
                 </div>
                 
-                <button className="text-blue-600">Edit</button>
+                <Link to='/address' className="text-blue-600">Edit</Link>
                 </div>
               </div>
           </section>  

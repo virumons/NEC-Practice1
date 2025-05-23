@@ -11,20 +11,26 @@ function Profilenav() {
               <Link to='/profile' className="text-gray-600">Personal information</Link>
               <Link to='/password' className="text-gray-600">Sign-in and security</Link>
               <Link to='/address' className="text-gray-600">Addresses</Link>
-              <div className="text-gray-600">Feedback</div>
+              {/* <div className="text-gray-600">Feedback</div> */}
             </div>
           </section>
 
           <section>
             <h4 className="font-semibold text-gray-700">Payment information</h4>
-            <div className="text-gray-600">Payments</div>
+            <Link to='/payment' className="text-gray-600">Payments methods</Link>
           </section>
 
           <section>
             <h4 className="font-semibold text-gray-700">Account preferences</h4>
             <div className="text-gray-600">Permissions</div>
             <div className="text-gray-600">Communication preferences</div>
-            <div className="text-gray-600">Close account</div>
+            {/* <div className="text-gray-600">Close account</div> */}
+          </section>
+
+          <section>
+            <h4 className="font-semibold text-gray-700">Buyer</h4>
+            <Link to='/main' className="text-gray-600">Buyer's history</Link>
+            {/* <div className="text-gray-600">Subscriptions</div> */}
           </section>
 
           <section>

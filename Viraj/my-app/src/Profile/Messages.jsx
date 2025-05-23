@@ -10,7 +10,7 @@ const Messages = () => {
       <div className="flex justify-between items-center border-b p-4 mb-6">
         <div className="space-x-6 text-base font-medium">
           <button className="text-gray-500 border-b-2 border-blue-600 hover:text-black">Messages</button>
-          <Link to='/pro' className="text-black  pb-1">Account</Link>
+          <Link to='/profile' className="text-black  pb-1">Account</Link>
         </div>
        
       </div>

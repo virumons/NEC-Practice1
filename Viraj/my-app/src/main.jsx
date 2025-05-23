@@ -7,18 +7,21 @@ import Maindashboard from './Maindashboard.jsx'
 import Productlisting from './Productlisting.jsx'
 import Per from './Preformance.jsx'
 import Login from './Login/Login.jsx'
+import Changepassword from './Login/Forgotpassword.jsx'
 import Signup from './Signup/Signup.jsx'
 // import Test from './SellerProductpage/Test.jsx'
 import Addpro from './Addproduct/Addproduct.jsx'
 import Suggestion from './Addproduct/Suggestion.jsx'
 import Chooseop from './Addproduct/Chooseop.jsx'
 import Profiles from './Profile/Profile.jsx'
+import Newprofiles from './Profile/Sellernewprofile.jsx'
 import Adddetails from './Addproduct/Adddetails.jsx'
 import Live from './Addproduct/Applicationlive.jsx'
 import Preview from './Addproduct/Preview.jsx'
 import Messages from './Profile/Messages.jsx'
 import Sellerpassword from './Profile/Password.jsx'
 import Selleraddress from './Profile/Address.jsx'
+import Payment from './Profile/Paymentmethods.jsx'
 
 import {
   createBrowserRouter,
@@ -29,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Login />,
+  },
+  {
+    path: '/changepassword',
+    element: <Changepassword />,
   },
   {
     path: '/main',
@@ -66,10 +73,17 @@ const router = createBrowserRouter([
     path: '/message',
     element: <Messages />,
   },
-  
+  {
+    path: '/newprofile',
+    element: <Newprofiles />,
+  },
   {
     path: '/profile',
     element: <Profiles />,
+  },
+  {
+    path: '/payment',
+    element: <Payment />,
   },
   {
     path: '/password',

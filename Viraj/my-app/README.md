@@ -48,3 +48,5 @@ pip install Flask Flask-JWT-Extended Flask-SQLAlchemy email-validator bcrypt  Fl
 pip install python-dotenv  
 npm install axios
 
+for product page
+filter- view all sold out, selling items make it diff category

@@ -25,7 +25,7 @@ const Suggestion = () => {
 
   const handleCardClick = (index) => {
     const selectedCard = suggestions[index];
-    navigate('/choose', {
+    navigate('/chooseoption', {
       state: {
         selectedItem: selectedCard,
         originalInput: parsedData, // Optional: include original input if needed later

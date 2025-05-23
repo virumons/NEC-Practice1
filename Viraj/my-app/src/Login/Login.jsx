@@ -1,27 +1,33 @@
- /* 
- dev - amuruta
- dev- viraj (jwt auth)
- */ 
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function Login() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({ email: "", password: "" });
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({ email: "", password: "", general: "" });
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    setError(""); // Clear error on change
+    setErrors({ ...errors, [e.target.name]: "", general: "" }); // Clear field & general errors
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!form.email || !form.password) {
-      setError("Email and password are required.");
+    let fieldErrors = { email: "", password: "", general: "" };
+    if (!form.email) fieldErrors.email = "Email is required.";
+    if (!form.password) fieldErrors.password = "Password is required.";
+
+    if (fieldErrors.email || fieldErrors.password) {
+      setErrors(fieldErrors);
       return;
     }
 
@@ -36,7 +42,8 @@ export default function Login() {
       navigate("/main");
     } catch (err) {
       const serverError = err.response?.data?.error || "Login failed. Try again.";
-      setError(serverError);
+      console.log(serverError);
+      setErrors((prev) => ({ ...prev, general: serverError }));
     }
   };
 
@@ -51,7 +58,6 @@ export default function Login() {
           Buy with your price tag, bargain with seller like on road
         </p>
 
-        {/* Testimonial */}
         <div className="bg-white text-gray-900 p-6 rounded-2xl shadow-2xl w-[26rem]">
           <div className="flex mb-3">
             {[...Array(5)].map((_, i) => (
@@ -99,28 +105,41 @@ export default function Login() {
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="Enter your email"
               />
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
             </div>
+
             <div className="mb-5">
               <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
-              <input
-                type="password"
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Enter your password"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={form.password}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10"
+                  placeholder="Enter your password"
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
+              {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
             </div>
+
             <div className="flex items-center justify-between text-sm mb-6">
               <label className="flex items-center">
                 <input type="checkbox" className="mr-2 rounded-sm" /> Remember me
               </label>
-              <a href="#" className="text-blue-500 hover:underline">
+              <Link to='/changepassword' className="text-blue-500 hover:underline">
                 Forgot password?
-              </a>
+              </Link>
             </div>
 
-            {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+            {errors.general && <p className="text-red-500 text-sm mb-4">{errors.general}</p>}
 
             <button
               type="submit"
